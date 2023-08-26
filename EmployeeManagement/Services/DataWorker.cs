@@ -14,6 +14,10 @@ namespace EmployeeManagement.Services
         }
 
         public List<T> GetTheEntityList() => _entities;
+        /// <summary>
+        /// Save the necessary entity to local drive and add it to the collection
+        /// </summary>
+        /// <param name="entity">Current entity</param>
         public void SaveTheEntity(T entity)
         {
             if (entity == null)

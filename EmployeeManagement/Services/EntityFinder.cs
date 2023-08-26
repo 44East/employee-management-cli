@@ -2,6 +2,9 @@
 
 namespace EmployeeManagement.Services
 {
+    /// <summary>
+    /// Universal class for searching entities in collections
+    /// </summary>
     internal class EntityFinder : IFinderEmployee
     {
         public List<Employee> GetEmployeeByName(string name, string surname, List<Employee> entities)
@@ -15,7 +18,7 @@ namespace EmployeeManagement.Services
             {
                 throw new ArgumentOutOfRangeException("The Employees collection is empty or null!");
             }
-            return entities.Where(e => e.Name == name && e.Surname == surname).ToList();      
+            return entities.Where(e => e.Name.ToLowerInvariant().Equals(name) && e.Surname.ToLowerInvariant().Equals(surname)).ToList();      
         }
     }
 }

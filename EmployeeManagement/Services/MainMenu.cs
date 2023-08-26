@@ -78,7 +78,6 @@ namespace EmployeeManagement.Services
                 });
                 Console.WriteLine(TextData.EmployeeAddedSuccess);
                 Task.Delay(1000).Wait();
-                Console.Clear();
             }
             catch (Exception ex)
             {
@@ -87,8 +86,7 @@ namespace EmployeeManagement.Services
             Run();
         }
         private void FindTheEmployee()
-        {
-            var foundEmployeeCollection = new List<Employee>();
+        {            
             bool runner = true;
             while (runner)
             {
@@ -102,7 +100,7 @@ namespace EmployeeManagement.Services
 
                 if (!string.IsNullOrEmpty(employeeName) && !string.IsNullOrEmpty(employeeSurname))
                 {
-                    foundEmployeeCollection = _finder.GetEmployeeByName(employeeName, employeeSurname, _dataWorker.GetTheEntityList());
+                    var foundEmployeeCollection = _finder.GetEmployeeByName(employeeName, employeeSurname, _dataWorker.GetTheEntityList());
                     if (foundEmployeeCollection.Count() > 0)
                     {
                         Console.WriteLine(TextData.EmployeeFoundSuccess);

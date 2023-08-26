@@ -16,14 +16,20 @@ namespace EmployeeManagement.Services
             _filePath = filePath;
             _fileName = fileName;
         }
-
+        /// <summary>
+        /// Saves the current entity collection to local drive
+        /// </summary>
+        /// <param name="currentEntityList">Current collection of the entities</param>
         public void SaveEntityToLocalDrive(List<T> currentEntityList)
         {
             FileInfo fileInfo = new FileInfo(Path.Combine(_filePath, _fileName));
             using FileStream fs = fileInfo.OpenWrite();
             JsonSerializer.Serialize(fs, currentEntityList);
         }
-
+        /// <summary>
+        /// Read the entity collection files from the local storage
+        /// </summary>
+        /// <returns>A <see cref="List{T}"/> of entities</returns>
         public List<T> ReadFileFromLocalDisk()
         {
             EnsureDirectoryExists(_filePath); // Check and create directory if needed
